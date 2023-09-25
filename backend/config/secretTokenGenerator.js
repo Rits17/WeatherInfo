@@ -1,0 +1,7 @@
+const crypto = require('crypto');
+
+
+const access_token_secret = 'a48a8bb2222feef98632abdc1c2c94dab46ed0a4141eb29401086e5f29de41c39ace6a965eabd36b54935067dfbd08cdde08da3e1b84935c0aee287b35066c43'
+const refresh_token_secret = '72931e5c97f32935104a800daf03fff38981c26bca8a94bec2d361c4c4dbb85b88a66111c7fc5ca99d8823d54b9c67d6176d39c9966acc9fc05fa6cbbddbfbb3'
+
+module.exports = { refresh_token_secret, access_token_secret }
