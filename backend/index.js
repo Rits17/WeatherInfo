@@ -24,7 +24,7 @@ dbConn();
 
 app.use(logger);
 
-//app.use(credentials);
+app.use(credentials);
 
 app.use(cors(corsOptions));
 
