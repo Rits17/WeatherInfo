@@ -9,6 +9,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import { RequireAuth } from './components/RequireAuth';
 import { Unauthorized } from './components/Unauthorized';
+import PersistLogin from './components/PersistLogin';
+import Button from './components/Button';
 
 
 function App() {
@@ -18,8 +20,9 @@ function App() {
       <Route path='/' element={<Register />}></Route>
       <Route path='/Login' element={<Login />}></Route>
       <Route path='/Unauthorized' element={<Unauthorized />}></Route>
+      <Route path='/Check' element={<Button />}></Route>
 
-
+    <Route element={<PersistLogin/>}>
       <Route element={<RequireAuth allowedRoles={['user']}/>}>
       <Route path='/home' element={<Home />}></Route>
       </Route>
@@ -30,6 +33,7 @@ function App() {
 
       <Route element={<RequireAuth allowedRoles={['admin']}/>}>
       <Route path='/contact' element={<Contact />} ></Route>
+      </Route>
       </Route>
 
     </Routes>

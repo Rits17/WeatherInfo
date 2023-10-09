@@ -150,7 +150,7 @@ const Register = () => {
                                             {pwdFocus && !validPwd ? <div id="pwdHelp" className="form-text">8 to 24 characters. Must Include upperCase,lowerCase letter,number and special character. Allowed special character are '@','#','$','%'.</div> : ""}
                                         </div>
                                         <div className="mb-3">
-                                            <label htmlFor="confirm_pwd" className="form-label">Password</label>
+                                            <label htmlFor="confirm_pwd" className="form-label">Confirm Password</label>
                                             <input
                                                 type="password"
                                                 className="form-control form-control-lg"

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 const BASE_URL='http://localhost:3500';
 
 export default axios.create({
@@ -10,3 +10,4 @@ export const axiosPrivate= axios.create({
     headers:{'Content-Type':'application/json'},
     withCredentials:true
 })
+

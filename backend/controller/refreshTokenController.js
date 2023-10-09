@@ -8,7 +8,7 @@ const refreshToken=async (req,res)=>{
     const cookies=req.cookies;
 
     if(!cookies?.jwt){
-        return res.status(401).json({'message':'Unauthorized'});
+        return res.status(401).json({'message':'No Cookie'});
     }
     const token=cookies.jwt;
 
@@ -21,7 +21,7 @@ const refreshToken=async (req,res)=>{
 
     jwt.verify(token,refresh_token_secret,(err,decoded)=>{
         if(err){
-            return res.status(401).json({'message':'Unauthorized'});
+            return res.status(401).json({'message':'Expired Cookie'});
         }
 
         const roles=Object.values(existingUser.Roles)
@@ -31,9 +31,9 @@ const refreshToken=async (req,res)=>{
                 'user': existingUser.UserName,
                 'roles': roles
             }
-        }, access_token_secret, { expiresIn: '60s' });
+        }, access_token_secret, { expiresIn: '40s' });
 
-        res.json({accessToken})
+        res.json({roles,accessToken})
     });
 }
 

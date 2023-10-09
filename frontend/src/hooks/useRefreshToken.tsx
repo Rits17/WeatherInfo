@@ -10,16 +10,29 @@ interface authProps {
     password?: string
 }
 
-const useRefreshToken = async () => {
+const useRefreshToken = () => {
     const { setAuth }: any = useAuth();
-    const response = await axios.get('/refreshToken', {
-        withCredentials: true
-    });
 
-    setAuth((prev: authProps) => {
-        return { ...prev, accessToken: response?.data.accessToken }
-    });
-    return response.data.accessToken
+    const refresh= async ()=>{
+        try{
+            const response = await axios.get('/refreshToken', {
+                withCredentials: true
+                // sending cookies
+            });
+            console.log(response?.status);
+            setAuth((prev: authProps) => {
+                return { ...prev, roles:response?.data.roles, accessToken: response?.data.accessToken }
+            });
+            return response?.data.accessToken
+        }
+        catch(err){
+            console.log("Refresh error");
+            console.log(err);
+        }  
+    }
+
+    return refresh;
+     
 }
 
 export default useRefreshToken

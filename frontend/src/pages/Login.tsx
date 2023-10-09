@@ -4,7 +4,7 @@ import axios from '../api/axios';
 import useAuth from '../hooks/useAuth';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 
-const Register = () => {
+const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -125,4 +125,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default Login

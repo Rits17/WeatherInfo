@@ -10,12 +10,12 @@ const logout=async (req,res)=>{
     const existingUser=await userModel.findOne({refreshToken:token});
 
     if(!existingUser){
-        res.clearCookie('jwt',{httpOnly:true});
+        res.clearCookie('jwt',{httpOnly:true,sameSite: 'strict'});
         return res.status(401).json({'message':'Unauthorized'});
     }
 
     await userModel.updateOne({ _id: existingUser._id }, { refreshToken: ''})
-    res.clearCookie('jwt',{httpOnly:true});
+    res.clearCookie('jwt',{httpOnly:true,sameSite: 'strict'});
     return res.status(200).json({'message':'You have successfully logged out'})
 }
 

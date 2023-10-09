@@ -1,5 +1,5 @@
 const userModel = require('../models/Employee')
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { refresh_token_secret, access_token_secret } = require('../config/secretTokenGenerator');
 
@@ -30,11 +30,11 @@ const handleLogin = async (req, res) => {
                     'user': existingUser.UserName,
                     'roles': roles
                 }
-            }, access_token_secret, { expiresIn: '60s' });
+            }, access_token_secret, { expiresIn: '40s' });
 
 
             await userModel.updateOne({ _id: existingUser._id }, { refreshToken: refreshToken })
-            res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+            res.cookie('jwt', refreshToken, { httpOnly: true,sameSite: 'strict', maxAge: 24 * 60 * 60 * 1000  });
             res.status(200).json({roles ,accessToken });
         }
         else {
